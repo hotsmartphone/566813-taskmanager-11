@@ -2,6 +2,9 @@
 
 const TASK_COUNT = 3;
 
+const siteMainElement = document.querySelector(`.main`);
+const siteHeaderElement = siteMainElement.querySelector(`.main__control`);
+
 const createSiteMenuTemplate = () => {
   return (
     `<section class="control__btn-wrap">
@@ -373,8 +376,6 @@ const render = (container, template, place = `beforeend`) => {
   container.insertAdjacentHTML(place, template);
 };
 
-const siteMainElement = document.querySelector(`.main`);
-const siteHeaderElement = siteMainElement.querySelector(`.main__control`);
 
 render(siteHeaderElement, createSiteMenuTemplate());
 render(siteMainElement, createFilterTemplate());
