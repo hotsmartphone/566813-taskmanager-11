@@ -1,3 +1,5 @@
+import {createElement} from "../utils.js";
+
 const getTodayTasksCount = (tasks) => {
   const currentTime = new Date();
   return tasks.filter((task) =>
@@ -73,4 +75,27 @@ const createFilterTemplate = (tasks) => {
   );
 };
 
-export {createFilterTemplate};
+class Filter {
+  constructor(tasks) {
+    this._tasks = tasks;
+    this._element = null;
+  }
+
+  getTemplate() {
+    return createFilterTemplate(this._tasks);
+  }
+
+  getElement() {
+    if (!this._element) {
+      this._element = createElement(this.getTemplate());
+    }
+
+    return this._element;
+  }
+
+  removeElement() {
+    this._element = null;
+  }
+}
+
+export default Filter;
